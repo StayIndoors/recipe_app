@@ -4,16 +4,24 @@
       <div class="form-row">
         <div class="col-5 form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="name"
+            #nameInput>
         </div>
         <div class="col-2 form-group">
           <label for="amount">Amount</label>
-          <input type="text" class="form-control" id="amount">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="amount"
+            #amountInput>
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 btn-toolbar" role="toolbar" aria-label="Edit shopping list buttons">
-          <button class="btn btn-success mr-2" type="submit" aria-label="Add Item Button">Add</button>     
+          <button class="btn btn-success mr-2" type="submit" aria-label="Add Item Button" (click)="onAddItem()">Add</button>     
           <button class="btn btn-danger mr-2" type="button" aria-label="Delete Item Button">Delete</button> 
           <button class="btn btn-warning" type="button" aria-label="Clear Item Button">Clear</button> 
         </div>
