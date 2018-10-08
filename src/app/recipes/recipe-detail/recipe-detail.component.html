@@ -14,16 +14,17 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <div class="dropdown open">
+    <div class="dropdown" ngbDropdown>
       <button 
-        class="btn btn-primary dropdown-toggle" 
+        class="btn btn-primary dropdown-toggle"
+        ngbDropdownToggle 
         type="button" 
         id="triggerId" 
         data-toggle="dropdown" 
         aria-haspopup="true" aria-expanded="false">
         Manage Recipe <span class="caret"></span>
       </button>
-      <div class="dropdown-menu" aria-labelledby="triggerId">
+      <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="triggerId">
         <button class="dropdown-item" href="#">Shopping List</button>
         <button class="dropdown-item" href="#">Edit Recipe</button>
         <button class="dropdown-item" href="#">Delete Recipe</button>
@@ -41,3 +42,4 @@
     Ingredients
   </div>
 </div>
+
