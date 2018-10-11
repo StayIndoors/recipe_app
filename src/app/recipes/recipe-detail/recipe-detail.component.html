@@ -25,7 +25,7 @@
         Manage Recipe <span class="caret"></span>
       </button>
       <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="triggerId">
-        <button class="dropdown-item" href="#">Shopping List</button>
+        <button class="dropdown-item" (click)="onAddToShoppingList()" style="cursor: pointer;">Add To Shopping List</button>
         <button class="dropdown-item" href="#">Edit Recipe</button>
         <button class="dropdown-item" href="#">Delete Recipe</button>
       </div>
