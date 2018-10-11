@@ -10,17 +10,26 @@ export class ShoppingListService {
     ];
 
     getIngredients() {
-    return this.ingredients.slice();
+        return this.ingredients.slice();
     }
 
-    addIngredient(ingredient: Ingredient) {
-        this.ingredients.push(ingredient);
-        this.ingredientsChanged.emit(this.ingredients.slice());
+    addIngredient(ingredient: Ingredient, publishChanges = true) {
+        // FindIndex will return -1 if ingredient name does not exist
+        const index = this.ingredients.findIndex(ingredientToFind => ingredientToFind.name === ingredient.name);
+
+        if (index === -1) {
+            this.ingredients.push(ingredient);
+        } else {
+            this.ingredients[index].amount += ingredient.amount;
+        }
+        if (publishChanges) {
+            this.ingredientsChanged.emit(this.ingredients.slice());
+        }
     }
 
     addIngredients(ingredients: Ingredient[]) {
         // Using a For Loop would be inefficient due to so many event calls
-        this.ingredients.push(...ingredients);
+        ingredients.forEach(ingredient => this.addIngredient(ingredient, false));
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
 }
