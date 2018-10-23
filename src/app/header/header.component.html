@@ -9,11 +9,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarRecipeBookContent" [ngbCollapse]="!isNavbarCollapsed">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/recipes']">Recipes</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/shopping-list']">Shopping List</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
