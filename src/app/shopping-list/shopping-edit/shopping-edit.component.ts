@@ -45,6 +45,11 @@ export class ShoppingEditComponent implements OnInit {
     form.reset();
   }
 
+  onClear() {
+    this.shoppingListForm.reset();
+    this.editMode = false;
+  }
+
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
     this.subscription.unsubscribe();
