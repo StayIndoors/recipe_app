@@ -29,18 +29,27 @@ export class ShoppingListService {
             this.ingredients[index].amount += ingredient.amount;
         }
         if (publishChanges) {
-            this.ingredientsChanged.next(this.ingredients.slice());
+            this.updateIngredients();
         }
     }
 
     addIngredients(ingredients: Ingredient[]) {
         // Using a For Loop would be inefficient due to so many event calls
         ingredients.forEach(ingredient => this.addIngredient(ingredient, false));
-        this.ingredientsChanged.next(this.ingredients.slice());
+        this.updateIngredients();
     }
 
     updateIngredient(index: number, newIngredient: Ingredient) {
         this.ingredients[index] = newIngredient;
+        this.updateIngredients();
+    }
+
+    updateIngredients() {
         this.ingredientsChanged.next(this.ingredients.slice());
+    }
+
+    deleteIngredient(index: number) {
+        this.ingredients.splice(index, 1);
+        this.updateIngredients();
     }
 }

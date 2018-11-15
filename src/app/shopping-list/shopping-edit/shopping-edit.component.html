@@ -28,8 +28,8 @@
       </div>
       <div class="form-row">
         <div class="col-12 btn-toolbar" role="toolbar" aria-label="Edit shopping list buttons">
-          <button class="btn btn-success mr-2" type="submit" [disabled]="!f.valid" aria-label="Add Item Button">{{ editMode ? 'Update' : 'Add' }}</button>     
-          <button class="btn btn-danger mr-2" type="button" aria-label="Delete Item Button">Delete</button> 
+          <button class="btn btn-success mr-2" type="submit" [disabled]="!f.valid" aria-label="Add Item Button">{{ editMode ? 'Update' : 'Add' }}</button>
+          <button class="btn btn-danger mr-2" type="button" (click)="onDelete()" *ngIf="editMode" aria-label="Delete Item Button">Delete</button> 
           <button class="btn btn-warning" type="button" (click)="onClear()" aria-label="Clear Item Button">Clear</button> 
         </div>
       </div>
