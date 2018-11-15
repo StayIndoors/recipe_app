@@ -10,6 +10,7 @@
             id="name"
             name="name"
             ngModel
+            required
           >
         </div>
         <div class="col-2 form-group">
@@ -20,12 +21,14 @@
             id="amount"
             name="amount"
             ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
           >
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 btn-toolbar" role="toolbar" aria-label="Edit shopping list buttons">
-          <button class="btn btn-success mr-2" type="submit" aria-label="Add Item Button">Add</button>     
+          <button class="btn btn-success mr-2" type="submit" [disabled]="!f.valid" aria-label="Add Item Button">Add</button>     
           <button class="btn btn-danger mr-2" type="button" aria-label="Delete Item Button">Delete</button> 
           <button class="btn btn-warning" type="button" aria-label="Clear Item Button">Clear</button> 
         </div>
