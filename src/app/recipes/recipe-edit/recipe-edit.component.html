@@ -11,7 +11,11 @@
         <div class="col-12">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" formControlName="name" class="form-control" id="name">
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              id="name">
           </div>
         </div>
       </div>
@@ -19,7 +23,11 @@
         <div class="col-12">
             <div class="form-group">
               <label for="imagePath">Image URL</label>
-              <input type="text" formControlName="imagePath" class="form-control" id="imagePath">
+              <input
+                type="text"
+                formControlName="imagePath"
+                class="form-control"
+                id="imagePath">
             </div>
           </div>
       </div>
@@ -32,18 +40,32 @@
         <div class="col-12">
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea type="text" formControlName="description" class="form-control" rows="6" id="description"></textarea>
+            <textarea
+              type="text"
+              formControlName="description"
+              class="form-control"
+              rows="6"
+              id="description"></textarea>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <div class="row">
+        <div class="col-12" formArrayName="ingredients">
+          <div 
+            class="row"
+            *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
+            [formGroupName]="i">
             <div class="col-8">
-              <input type="text" class="form-control">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name">
             </div>
             <div class="col-2">
-              <input type="number" class="form-control">
+              <input
+                type="number"
+                class="form-control"
+                formControlName="amount">
             </div>
             <div class="col-2">
               <button class="btn btn-danger">X</button>
