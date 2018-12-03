@@ -15,6 +15,7 @@ export class ShoppingEditComponent implements OnInit {
   editMode = false;
   editedItemIndex: number;
   editedItem: Ingredient;
+  measurements = ['tsp', 'tbsp', 'fl oz', 'cup', 'pt', 'qt', 'gal', 'oz', 'lbs', 'count'];
 
   constructor(private shoppingListService: ShoppingListService) { }
 
@@ -27,7 +28,8 @@ export class ShoppingEditComponent implements OnInit {
           this.editedItem = this.shoppingListService.getIngredient(index);
           this.shoppingListForm.setValue({
             name: this.editedItem.name,
-            amount: this.editedItem.amount
+            amount: this.editedItem.amount,
+            measurement: this.editedItem.measurement
           });
         }
       );
@@ -35,7 +37,7 @@ export class ShoppingEditComponent implements OnInit {
 
   onAddItem(form: NgForm) {
     const value = form.value;
-    const newIngredient = new Ingredient(value.name, value.amount);
+    const newIngredient = new Ingredient(value.name, value.amount, value.measurement);
     if (this.editMode) {
       this.shoppingListService.updateIngredient(this.editedItemIndex, newIngredient);
     } else {
