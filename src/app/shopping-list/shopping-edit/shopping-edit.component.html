@@ -25,6 +25,18 @@
             pattern="^[1-9]+[0-9]*$"
           >
         </div>
+        <div class="col-2 form-group">
+          <label for="measurement">Measurement</label>
+          <select
+            class="form-control"
+            id="measurement"
+            name="measurement"
+            ngModel
+            required
+            >
+            <option *ngFor="let measure of measurements" [value]="measure">{{measure}}</option>
+          </select>
+        </div>
       </div>
       <div class="form-row">
         <div class="col-12 btn-toolbar" role="toolbar" aria-label="Edit shopping list buttons">

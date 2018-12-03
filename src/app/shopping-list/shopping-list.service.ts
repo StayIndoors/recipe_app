@@ -7,8 +7,8 @@ export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>();
     startedEditing = new Subject<number>();
     private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
+    new Ingredient('Apples', 5, 'count'),
+    new Ingredient('Tomatoes', 10, 'count'),
     ];
 
     getIngredients() {
@@ -26,7 +26,14 @@ export class ShoppingListService {
         if (index === -1) {
             this.ingredients.push(ingredient);
         } else {
-            this.ingredients[index].amount += ingredient.amount;
+            if (this.ingredients[index].measurement = ingredient.measurement) {
+                this.ingredients[index].amount += ingredient.amount;
+            } else {
+                this.normalize(this.ingredients[index].measurement)
+            }
+
+            )
+            // this.ingredients[index].measurement = ingredient.measurement;
         }
         if (publishChanges) {
             this.updateIngredients();
@@ -51,5 +58,17 @@ export class ShoppingListService {
     deleteIngredient(index: number) {
         this.ingredients.splice(index, 1);
         this.updateIngredients();
+    }
+
+    normalize() {
+
+    }
+
+    simplify() {
+
+    }
+
+    convert() {
+
     }
 }
