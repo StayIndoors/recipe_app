@@ -29,10 +29,10 @@ export class ShoppingListService {
             if (this.ingredients[index].measurement = ingredient.measurement) {
                 this.ingredients[index].amount += ingredient.amount;
             } else {
-                this.normalize(this.ingredients[index].measurement)
+                this.normalize(this.ingredients[index]);
+                this.normalize(ingredient);
+                this.ingredients[index].amount += ingredient.amount;
             }
-
-            )
             // this.ingredients[index].measurement = ingredient.measurement;
         }
         if (publishChanges) {
@@ -60,12 +60,33 @@ export class ShoppingListService {
         this.updateIngredients();
     }
 
-    normalize() {
+    normalize(ingredient: Ingredient) {
+        // convert volumes to teaspoons 'tsp', 'tbsp', 'fl oz', 'cup', 'pt', 'qt', 'gal', 'oz', 'lbs', 'count'
+        if (ingredient.measurement === 'gal') {
+            ingredient.amount = ingredient.amount * 768;
+            ingredient.measurement = 'tsp';
+        } else if (ingredient.measurement === 'qt') {
+            ingredient.amount = ingredient.amount * 192;
+            ingredient.measurement = 'tsp';
+        } else if (ingredient.measurement === 'pt') {
+            ingredient.amount = ingredient.amount * 96;
+            ingredient.measurement = 'tsp';
+        } else if (ingredient.measurement === 'cups') {
+            ingredient.amount = ingredient.amount * 48.6922;
+            ingredient.measurement = 'tsp';
+        } else if (ingredient.measurement === 'fl oz') {
+            ingredient.amount = ingredient.amount * 6;
+            ingredient.measurement = 'tsp';
+        } else if (ingredient.measurement === 'tbsp') {
+            ingredient.amount = ingredient.amount * 3;
+            ingredient.measurement = 'tsp';
+        }
 
-    }
-
-    simplify() {
-
+        // convert weight to ounces
+        if (ingredient.measurement === 'lbs') {
+            ingredient.amount = ingredient.amount * 16;
+            ingredient.measurement = 'oz';
+        }
     }
 
     convert() {
